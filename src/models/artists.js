@@ -1,10 +1,10 @@
 import mongoose from 'mongoose';
 const {Schema} = mongoose;
 
-const exhibitionSchema = new Schema({
+const artistSchema = new Schema({
     Name: String,
-    Date: String,
-    About: String,
-    Poster: String,
+    Photo: String,
+    Occupation: String,
     LastModified: String
 });
+
