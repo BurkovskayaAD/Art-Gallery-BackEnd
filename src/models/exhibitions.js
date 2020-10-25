@@ -8,3 +8,7 @@ const exhibitionSchema = new Schema({
     Poster: String,
     LastModified: String
 });
+
+const Exhibitions = mongoose.model('Exhibitions', exhibitionSchema);
+
+module.exports = Exhibitions;

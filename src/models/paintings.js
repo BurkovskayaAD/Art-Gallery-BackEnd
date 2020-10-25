@@ -7,3 +7,7 @@ const paintingSchema = new Schema({
     LastModified: String,
     Author: String
 });
+
+const Paintings = mongoose.model('Paintings', paintingSchema);
+
+module.exports = Paintings;

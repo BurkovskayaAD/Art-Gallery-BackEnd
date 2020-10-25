@@ -1,4 +1,6 @@
-const template = require( "./routes-template" );
+const artistTemplate = require( "./routes-template/artists" );
+const exhibitionTemplate = require( "./routes-template/exhibitions" );
+const paintingTemplate = require( "./routes-template/paintings" );
 
 const routes = app => {
   app.use( ( req, res, next ) => {
@@ -22,7 +24,9 @@ const routes = app => {
     next();
   } );
 
-  app.use( "/", template );
+  app.use( "/artists", artistTemplate );
+  app.use( "/exhibitions", exhibitionTemplate );
+  app.use( "/paintings", paintingTemplate );
 };
 
 module.exports = routes;
@@ -33,24 +37,3 @@ module.exports = routes;
 
 
 
-
-// const express = require('express');
-// const router = express.Router();
-//
-// const mongoose = require('mongoose');
-//
-// async function start(){
-//   try {
-//     await mongoose.connect('mongodb+srv://Hanna:1q2w3e4r@cluster0.d39nt.mongodb.net')
-//   }
-//   catch (e) {
-//       console.log(e);
-//     }
-// }
-//
-// /* GET home page. */
-// router.get('/', function(req, res, next) {
-//   res.render('index', { title: 'Express' });
-// });
-//
-// module.exports = router;
