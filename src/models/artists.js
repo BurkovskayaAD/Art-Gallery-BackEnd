@@ -8,3 +8,6 @@ const artistSchema = new Schema({
     LastModified: String
 });
 
+const Artists = mongoose.model('Artists', artistSchema);
+
+module.exports = Artists;
