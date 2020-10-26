@@ -1,4 +1,4 @@
-const bodyParser = require( "body-parser" );
+// const bodyParser = require( "body-parser" );
 const express = require( "express" );
 // const morgan = require( "morgan" );
 const path = require( "path" );
@@ -17,11 +17,11 @@ class ExpressLoader {
 
         // app.use( morgan( "dev" ) );
         // app.use( compression() );
-        app.use( bodyParser.urlencoded( {
-            extended: false,
-            limit: "20mb"
-        } ) );
-        app.use( bodyParser.json( { limit: "20mb" } ) );
+        // app.use( bodyParser.urlencoded( {
+        //     extended: false,
+        //     limit: "20mb"
+        // } ) );
+        // app.use( bodyParser.json( { limit: "20mb" } ) );
 
         routes( app );
 
