@@ -1,20 +1,18 @@
-const mongooseService = require('./mongooseService');
-const artistsModel = require('../models/artists');
+const mongooseService = require("./mongooseService");
+const artistsModel = require("../models/artists");
 
-class artistsService{
-    constructor() {
-        this.MongooseServiceInstance = new mongooseService(artistsModel);
-    }
+class ArtistsService {
+  constructor() {
+    this.MongooseServiceInstance = new mongooseService(artistsModel);
+  }
 
-    async find ( ){
-        try {
-            const result = await this.MongooseServiceInstance.find();
-            console.log(result);
-            return {success: true, body: result};
-        } catch (err) {
-            return { success: false, error: err };
-        }
+  async findArtists(query) {
+    try {
+      return await this.MongooseServiceInstance.find(query);
+    } catch (err) {
+      return { errorPresent: true, error: err };
     }
+  }
 }
 
-module.exports = artistsService;
+module.exports = ArtistsService;
