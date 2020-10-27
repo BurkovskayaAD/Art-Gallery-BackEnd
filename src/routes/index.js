@@ -1,6 +1,6 @@
-const artistTemplate = require( "./routes-template/artists" );
-const exhibitionTemplate = require( "./routes-template/exhibitions" );
-const paintingTemplate = require( "./routes-template/paintings" );
+const artistTemplate = require( "./artistsRoute" );
+// const exhibitionTemplate = require( "./routes-template/exhibitions" );
+// const paintingTemplate = require( "./routes-template/paintings" );
 
 const routes = app => {
   app.use( ( req, res, next ) => {
@@ -25,8 +25,8 @@ const routes = app => {
   } );
 
   app.use( "/artists", artistTemplate );
-  app.use( "/exhibitions", exhibitionTemplate );
-  app.use( "/paintings", paintingTemplate );
+  // app.use( "/exhibitions", exhibitionTemplate );
+  // app.use( "/paintings", paintingTemplate );
 };
 
 module.exports = routes;

@@ -1,4 +1,5 @@
-import mongoose from 'mongoose';
+// import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 const artistSchema = new Schema({
@@ -8,6 +9,6 @@ const artistSchema = new Schema({
     LastModified: String
 });
 
-const Artists = mongoose.model('Artists', artistSchema);
+const Artists = mongoose.model('Artist', artistSchema);
 
 module.exports = Artists;

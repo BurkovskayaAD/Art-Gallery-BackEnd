@@ -1,21 +1,21 @@
 const express = require( 'express' );
-const service = require('../services/artistsService')
+const ArtistService = require('../services/artistsService')
 
 const router = express.Router();
 
 const artistService = new ArtistService();
 
 router.get('/', (req, res) => {
-    const artists = artistService.getArtists();
-    res.send(artists);
+    const artist = artistService.find();
+    res.send(artist);
 });
-router.get('/:artistsId', (req, res) => {
-    const artists = artistService.getAristById();
-    res.send(artists);
-});
+// router.get('/:artistsId', (req, res) => {
+//     const artists = artistService.getAristById();
+//     res.send(artists);
+// });
 router.post('/', (req, res) => {
-    const artists = artistService.addNewArtists();
-    res.send(artists);
+    const artistId = artistService.addNewArtists();
+    res.send(artistId);
 });
 
 module.exports = router;

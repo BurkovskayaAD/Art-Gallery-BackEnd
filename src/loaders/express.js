@@ -1,41 +1,43 @@
-// const bodyParser = require( "body-parser" );
+const bodyParser = require( "body-parser" );
 const express = require( "express" );
-// const morgan = require( "morgan" );
+const morgan = require( "morgan" );
 const path = require( "path" );
 const routes = require( "../routes" );
-// const compression = require( "compression" );
+const compression = require( "compression" );
 // const logger = require( "../services/Logger" );
 const config = require( "../config" );
 
 class ExpressLoader {
     constructor () {
         const app = express();
-
-        app.use( this.errorHandler );
-
+        console.log('1');
+        app.use( ExpressLoader.errorHandler );
+        console.log('2');
         app.use( express.static( path.join( __dirname, "uploads" ) ) );
+        console.log('3');
 
-        // app.use( morgan( "dev" ) );
-        // app.use( compression() );
-        // app.use( bodyParser.urlencoded( {
-        //     extended: false,
-        //     limit: "20mb"
-        // } ) );
-        // app.use( bodyParser.json( { limit: "20mb" } ) );
+        app.use( morgan( "dev" ) );
+        app.use( compression() );
+        app.use( bodyParser.urlencoded( {
+            extended: false,
+            limit: "20mb"
+        } ) );
+        app.use( bodyParser.json( { limit: "20mb" } ) );
 
         routes( app );
 
 
-        // this.server = app.listen( config.port, () => {
-        //     logger.info( `Express running, now listening on port ${config.port}` );
-        // } );
+        this.server = app.listen( config.port, () => {
+            // logger.info( `Express running, now listening on port ${config.port}` );
+            console.log('Express running');
+        } );
     }
 
     get Server () {
         return this.server;
     }
 
-   errorHandler ( error, req, res, next ) {
+   static errorHandler ( error, req, res, next ) {
         let parsedError;
 
         try {
@@ -45,6 +47,7 @@ class ExpressLoader {
                 parsedError = error;
             }
         } catch ( e ) {
+            console.log(e);
             // logger.error( e );
         }
 

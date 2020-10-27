@@ -12,6 +12,9 @@ class MongooseService{
     delete ( id ) {
         return this.model.findByIdAndDelete( id ).exec();
     }
+    find () {
+        return this.model.find().exec();
+    }
 }
 
 module.exports = MongooseService;
