@@ -16,11 +16,14 @@ router.get("/", async (req, res) => {
   }
 });
 
-// router.get('/:artistsId', (req, res) => {
-//   console.log(req.params)
-//
-//     res.send(1);
-// });
+router.get('/:artistId', async (req, res) => {
+  const artist = await artistService.findArtistById(req.params.get('artistId'));
+  if (artist.errorPresent) {
+    res.status(500).json(artist.error);
+  } else {
+    res.status(200).json(artist);
+  }
+});
 
 router.post("/", async (req, res) => {
   const newArtist = await artistService.addArtists(req.body);
