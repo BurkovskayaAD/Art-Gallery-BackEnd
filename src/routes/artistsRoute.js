@@ -1,5 +1,7 @@
 const express = require("express");
+const bodyParser = require("body-parser");
 const ArtistService = require("../services/artistsService");
+const schema = require("../models/artists");
 
 const router = express.Router();
 
@@ -15,11 +17,18 @@ router.get("/", async (req, res) => {
 });
 
 // router.get('/:artistsId', (req, res) => {
-//     const artists = artistService.getAristById();
-//     res.send(artists);
+//   console.log(req.params)
+//
+//     res.send(1);
 // });
 
 router.post("/", async (req, res) => {
+  const newArtist = await artistService.addArtists(req.body);
+  if (newArtist.errorPresent) {
+    res.status(500).json(newArtist.error);
+  } else {
+    res.status(201).json({ id: newArtist._id });
+  }
 });
 
 module.exports = router;
