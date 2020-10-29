@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const ArtistService = require("../services/artistsService");
 const schema = require("../models/artists");
 
@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 });
 
 router.get('/:artistId', async (req, res) => {
-  const artist = await artistService.findArtistById(req.params.get('artistId'));
+  const artist = await artistService.findArtistById(req.params.artistId);
   if (artist.errorPresent) {
     res.status(500).json(artist.error);
   } else {
@@ -31,6 +31,15 @@ router.post("/", async (req, res) => {
     res.status(500).json(newArtist.error);
   } else {
     res.status(201).json({ id: newArtist._id });
+  }
+});
+
+router.delete('/:artistIdDelete', async (req, res) => {
+  const artistDelete = await artistService.deleteArtistById(req.params.artistIdDelete);
+  if (artistDelete.errorPresent) {
+    res.status(500).json(artistDelete.error);
+  } else {
+    res.status(200).json(artistDelete);
   }
 });
 

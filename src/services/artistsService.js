@@ -29,6 +29,14 @@ class ArtistsService {
       return { errorPresent: true, error: err };
     }
   }
+
+  async deleteArtistById(id) {
+    try {
+      return await this.MongooseServiceInstance.delete(id);
+    } catch (err) {
+      return { errorPresent: true, error: err };
+    }
+  }
 }
 
 module.exports = ArtistsService;

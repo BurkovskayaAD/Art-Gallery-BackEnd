@@ -1,12 +1,14 @@
-import mongoose from 'mongoose';
-const {Schema} = mongoose;
+const mongoose = require("mongoose");
+const { Schema } = mongoose;
 
 const exhibitionSchema = new Schema({
-    Name: String,
-    Date: String,
-    About: String,
-    Poster: String,
-    LastModified: String
+    name: String,
+    date: {type: Date},
+    about: String,
+    poster: String,
+    lastModified: { type: Date, default: Date.now },
+}, {
+    collection: "Exhibitions"
 });
 
 const Exhibitions = mongoose.model('Exhibitions', exhibitionSchema);
