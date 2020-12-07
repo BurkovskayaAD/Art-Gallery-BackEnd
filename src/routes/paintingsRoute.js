@@ -16,6 +16,17 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/images/:paintingPhotoId", async (req, res) => {
+  const paintingPicture = await paintingService.findPaintingPicture(
+      req.params.paintingPhotoId
+  );
+  if (paintingPicture.errorPresent) {
+    res.status(500).json(paintingPicture.error);
+  } else {
+    res.status(200).json(paintingPicture);
+  }
+});
+
 router.get("/:paintingId", async (req, res) => {
   const painting = await paintingService.findPaintingById(
     req.params.paintingId

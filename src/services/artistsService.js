@@ -22,17 +22,17 @@ class ArtistsService {
     }
   }
 
-  async addArtists(body) {
+  async findArtistById(id) {
     try {
-      return await this.MongooseServiceInstance.create(body);
+      return await this.MongooseServiceInstance.findById(id);
     } catch (err) {
       return { errorPresent: true, error: err };
     }
   }
 
-  async findArtistById(id) {
+  async addArtists(body) {
     try {
-      return await this.MongooseServiceInstance.findById(id);
+      return await this.MongooseServiceInstance.create(body);
     } catch (err) {
       return { errorPresent: true, error: err };
     }

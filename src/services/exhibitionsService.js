@@ -14,6 +14,14 @@ class ExhibitionsService {
         }
     }
 
+    async findExhibitionPhoto(id){
+        try {
+            return await this.MongooseServiceInstance.findByIdPhoto(id);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
+
     async addExhibitions(body) {
         try {
             return await this.MongooseServiceInstance.create(body);

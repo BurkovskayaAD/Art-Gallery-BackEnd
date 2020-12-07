@@ -14,13 +14,13 @@ class PaintingsService {
         }
     }
 
-    // async Pictures(query) {
-    //     try {
-    //         return await this.MongooseServiceInstance.find(query).limit(6);
-    //     } catch (err) {
-    //         return { errorPresent: true, error: err };
-    //     }
-    // }
+    async findPaintingPicture(id) {
+        try {
+            return await this.MongooseServiceInstance.findById(id);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 
     async addPaintings(body) {
         try {
