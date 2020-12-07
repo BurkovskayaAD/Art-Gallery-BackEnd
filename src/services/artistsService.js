@@ -16,7 +16,7 @@ class ArtistsService {
 
   async findArtistPhoto(id){
     try {
-      return await this.MongooseServiceInstance.findById(id);
+      return await this.MongooseServiceInstance.findByIdPhoto(id);
     } catch (err) {
       return { errorPresent: true, error: err };
     }
