@@ -7,10 +7,6 @@ class MongooseService {
     return this.model.create(body);
   }
 
-  count(query) {
-    return this.model.count(query).exec();
-  }
-
   delete(id) {
     return this.model.findByIdAndDelete(id).exec();
   }

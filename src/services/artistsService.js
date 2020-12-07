@@ -14,6 +14,14 @@ class ArtistsService {
     }
   }
 
+  async findArtistPhoto(id){
+    try {
+      return await this.MongooseServiceInstance.findById(id);
+    } catch (err) {
+      return { errorPresent: true, error: err };
+    }
+  }
+
   async addArtists(body) {
     try {
       return await this.MongooseServiceInstance.create(body);

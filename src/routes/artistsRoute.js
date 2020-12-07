@@ -25,6 +25,15 @@ router.get('/:artistId', async (req, res) => {
   }
 });
 
+router.get('/images/:artistPhotoId', async (req, res) => {
+  const artistPhoto = await artistService.findArtistById(req.params.artistPhotoId);
+  if (artistPhoto.errorPresent) {
+    res.status(500).json(artistPhoto.error);
+  } else {
+    res.status(200).json(artistPhoto);
+  }
+});
+
 router.post("/", async (req, res) => {
   const newArtist = await artistService.addArtists(req.body);
   if (newArtist.errorPresent) {
