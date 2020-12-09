@@ -29,6 +29,8 @@ const routes = app => {
   app.use( "/paintings", paintingTemplate );
 };
 
+
+
 module.exports = routes;
 
 

@@ -13,7 +13,6 @@ class ExpressLoader {
 
     app.use(ExpressLoader.errorHandler);
     app.use(express.static(path.join(__dirname, "uploads")));
-
     app.use(morgan("dev"));
     app.use(compression());
     app.use(
