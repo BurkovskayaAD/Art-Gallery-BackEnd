@@ -7,6 +7,15 @@ const router = express.Router();
 
 const paintingService = new PaintingService();
 
+router.get("/latest", async (req, res) => {
+  const paintingsL = await paintingService.findPaintingsLatest({});
+  if (paintingsL.errorPresent) {
+    res.status(500).json(paintingsL.error);
+  } else {
+    res.status(200).json(paintingsL);
+  }
+});
+
 router.get("/", async (req, res) => {
   const paintings = await paintingService.findPaintings({});
   if (paintings.errorPresent) {

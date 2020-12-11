@@ -13,6 +13,13 @@ class ExhibitionsService {
             return { errorPresent: true, error: err };
         }
     }
+    async findExhibitionsLatest(query) {
+        try {
+            return await this.MongooseServiceInstance.find(query);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 
     async findExhibitionPhoto(id){
         try {

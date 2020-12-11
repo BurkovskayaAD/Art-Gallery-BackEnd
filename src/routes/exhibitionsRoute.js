@@ -16,6 +16,15 @@ router.get("/", async (req, res) => {
     }
 });
 
+router.get("/latest", async (req, res) => {
+    const exhibitionsL = await exhibitionService.findExhibitionsLatest({});
+    if (exhibitionsL.errorPresent) {
+        res.status(500).json(exhibitionsL.error);
+    } else {
+        res.status(200).json(exhibitionsL);
+    }
+});
+
 router.get('/images/:exhibitionPhotoId', async (req, res) => {
     const exhibitionPoster = await exhibitionService.findExhibitionPhoto(req.params.exhibitionPhotoId);
     if (exhibitionPoster.errorPresent) {

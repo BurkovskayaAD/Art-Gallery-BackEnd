@@ -13,6 +13,13 @@ class PaintingsService {
             return { errorPresent: true, error: err };
         }
     }
+    async findPaintingsLatest(query) {
+        try {
+            return await this.MongooseServiceInstance.find(query);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 
     async findPaintingPicture(id) {
         try {

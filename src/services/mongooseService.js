@@ -15,6 +15,10 @@ class MongooseService {
     return this.model.find(query).exec();
   }
 
+  findLatest(query) {
+    return this.model.find(query).limit(10).sort({_id:-1}).exec();
+  }
+
   findById(id) {
     return this.model.findById(id).exec();
   }

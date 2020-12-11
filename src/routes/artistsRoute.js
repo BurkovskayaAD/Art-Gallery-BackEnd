@@ -16,6 +16,15 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/latest", async (req, res) => {
+  const artistsL = await artistService.findArtistsLatest({});
+  if (artistsL.errorPresent) {
+    res.status(500).json(artistsL.error);
+  } else {
+    res.status(200).json(artistsL);
+  }
+});
+
 router.get('/:artistId', async (req, res) => {
   const artist = await artistService.findArtistById(req.params.artistId);
   if (artist.errorPresent) {
