@@ -16,10 +16,12 @@
     "http-errors": "~1.6.3",
     "mongoose": "^5.10.10",
     "morgan": "~1.9.1",
+    "passport": "^0.4.1",
     "pug": "2.0.0-beta11",
     "request": "^2.88.2"
   },
   "devDependencies": {
+    "express-session": "^1.17.1",
     "prettier": "^2.1.2"
   }
 }
