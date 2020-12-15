@@ -1,6 +1,7 @@
 const artistTemplate = require( "./artistsRoute" );
 const exhibitionTemplate = require( "./exhibitionsRoute" );
 const paintingTemplate = require( "./paintingsRoute" );
+const userTemplate = require( "./usersRoute" );
 
 const routes = app => {
   app.use( ( req, res, next ) => {
@@ -27,6 +28,8 @@ const routes = app => {
   app.use( "/artists", artistTemplate );
   app.use( "/exhibitions", exhibitionTemplate );
   app.use( "/paintings", paintingTemplate );
+  app.use( "/users", userTemplate );
+
 };
 
 

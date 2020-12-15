@@ -1,11 +1,14 @@
 const bodyParser = require("body-parser");
 const express = require("express");
 const morgan = require("morgan");
+const cookieParser = require('cookie-parser');
 const path = require("path");
 const routes = require("../routes");
 const compression = require("compression");
-// const logger = require( "../services/Logger" );
 const config = require("../config");
+const expressValidator = require('express-validator');
+const expressSession = require('express-session');
+
 
 class ExpressLoader {
   constructor() {
@@ -22,6 +25,10 @@ class ExpressLoader {
       })
     );
     app.use(bodyParser.json({ limit: "20mb" }));
+
+    app.use(expressValidator());
+    app.use(cookieParser());
+    app.use(expressSession({secret: 'max', saveUninitialized: false, resave: false}));
 
     routes(app);
 
