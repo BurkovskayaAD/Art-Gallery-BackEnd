@@ -6,7 +6,7 @@ const path = require("path");
 const routes = require("../routes");
 const compression = require("compression");
 const config = require("../config");
-const expressValidator = require('express-validator');
+const expressValidator = require("express-validator");
 const expressSession = require('express-session');
 
 
@@ -26,7 +26,7 @@ class ExpressLoader {
     );
     app.use(bodyParser.json({ limit: "20mb" }));
 
-    app.use(expressValidator());
+    // app.use(expressValidator());
     app.use(cookieParser());
     app.use(expressSession({secret: 'max', saveUninitialized: false, resave: false}));
 
