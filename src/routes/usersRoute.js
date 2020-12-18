@@ -23,11 +23,22 @@ const userService = new UserService();
 // })
 
 router.post("/", async (req, res) => {
+    // const newUser = await userService.findUser({userEmail: req.body.email});
+    // if (newUser.errorPresent){
+    //     await userService.addUsers(req.body);
+    //     res.status(500).json(newUser.error);
+    // } else {
+    //     res.status(201).json(newUser);
+    // }
     const newUser = await userService.addUsers(req.body);
     if (newUser.errorPresent) {
         res.status(500).json(newUser.error);
     } else {
-        res.status(201).json({ id: newUser._id });
+        res.status(201).json(newUser);
+        // if (!req.session.key) req.session.key = req.sessionID
+        //
+        // req.session.key[req.sessionID].showAd = req.body.showAd
+        // res.sendStatus(200)
     }
 });
 

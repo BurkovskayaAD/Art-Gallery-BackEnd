@@ -6,8 +6,10 @@ const path = require("path");
 const routes = require("../routes");
 const compression = require("compression");
 const config = require("../config");
-const expressValidator = require("express-validator");
-const expressSession = require('express-session');
+// const session = require('express-session');
+// const redisStorage = require('connect-redis')(session);
+// const redis = require('redis');
+// const client = redis.createClient()
 
 
 class ExpressLoader {
@@ -26,9 +28,19 @@ class ExpressLoader {
     );
     app.use(bodyParser.json({ limit: "20mb" }));
 
-    // app.use(expressValidator());
+    // app.use(
+    //     session({
+    //       store: new redisStorage({
+    //         client: client,
+    //         ttl: 3600000,
+    //       }),
+    //       secret: 'you secret key',
+    //       saveUninitialized: true,
+    //     })
+    // )
+
     app.use(cookieParser());
-    app.use(expressSession({secret: 'max', saveUninitialized: false, resave: false}));
+
 
     routes(app);
 
