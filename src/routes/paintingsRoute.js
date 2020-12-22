@@ -67,13 +67,5 @@ router.delete("/:paintingIdDelete", async (req, res) => {
   }
 });
 
-// router.get("/pictures", async (req, res) => {
-//   const pict = await paintingService.Pictures({});
-//   if (pict.errorPresent) {
-//     res.status(500).json(pict.error);
-//   } else {
-//     res.status(200).json(pict);
-//   }
-// });
 
 module.exports = router;

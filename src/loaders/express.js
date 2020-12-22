@@ -6,11 +6,6 @@ const path = require("path");
 const routes = require("../routes");
 const compression = require("compression");
 const config = require("../config");
-// const session = require('express-session');
-// const redisStorage = require('connect-redis')(session);
-// const redis = require('redis');
-// const client = redis.createClient()
-
 
 class ExpressLoader {
   constructor() {
@@ -27,20 +22,7 @@ class ExpressLoader {
       })
     );
     app.use(bodyParser.json({ limit: "20mb" }));
-
-    // app.use(
-    //     session({
-    //       store: new redisStorage({
-    //         client: client,
-    //         ttl: 3600000,
-    //       }),
-    //       secret: 'you secret key',
-    //       saveUninitialized: true,
-    //     })
-    // )
-
     app.use(cookieParser());
-
 
     routes(app);
 
@@ -64,10 +46,8 @@ class ExpressLoader {
       }
     } catch (e) {
       console.log(e);
-      // logger.error( e );
     }
 
-    // logger.error( parsedError );
 
     if (res.headersSent) {
       return next(error);
