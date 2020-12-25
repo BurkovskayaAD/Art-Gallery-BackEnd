@@ -52,6 +52,14 @@ class ExhibitionsService {
             return { errorPresent: true, error: err };
         }
     }
+
+    async findExhibitionByIdAndUpdate(id) {
+        try {
+            return await this.MongooseServiceInstance.findByIdAndUpdate(id);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 }
 
 module.exports = ExhibitionsService;

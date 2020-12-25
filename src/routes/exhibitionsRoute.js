@@ -61,5 +61,14 @@ router.delete('/:exhibitionIdDelete', async (req, res) => {
     }
 });
 
+router.post('/:exhibitionEditId', async (req, res) => {
+    const exhibitionEdit = await exhibitionService.findExhibitionByIdAndUpdate(req.params.exhibitionEditId);
+    if (exhibitionEdit.errorPresent) {
+        res.status(500).json(exhibitionEdit.error);
+    } else {
+        res.status(200).json(exhibitionEdit);
+    }
+});
+
 
 module.exports = router;

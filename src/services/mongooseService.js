@@ -30,6 +30,10 @@ class MongooseService {
   findByIdPhoto(id) {
     return this.model.findById(id).exec();
   }
+
+  findByIdAndUpdate(id) {
+    return this.model.findByIdAndUpdate(id).exec();
+  }
 }
 
 module.exports = MongooseService;

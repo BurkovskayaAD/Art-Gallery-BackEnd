@@ -61,4 +61,15 @@ router.delete('/:artistIdDelete', async (req, res) => {
   }
 });
 
+router.post('/:artistEditId', async (req, res) => {
+  const artistEdit = await artistService.findArtistByIdAndUpdate(req.params.artistEditId);
+  if (artistEdit.errorPresent) {
+    res.status(500).json(artistEdit.error);
+  } else {
+    res.status(200).json(artistEdit);
+  }
+});
+
+
+
 module.exports = router;

@@ -67,5 +67,14 @@ router.delete("/:paintingIdDelete", async (req, res) => {
   }
 });
 
+router.post('/:paintingEditId', async (req, res) => {
+  const paintingEdit = await paintingService.findPaintingByIdAndUpdate(req.params.paintingEditId);
+  if (paintingEdit.errorPresent) {
+    res.status(500).json(paintingEdit.error);
+  } else {
+    res.status(200).json(paintingEdit);
+  }
+});
+
 
 module.exports = router;

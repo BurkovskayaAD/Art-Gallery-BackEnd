@@ -52,6 +52,14 @@ class PaintingsService {
             return { errorPresent: true, error: err };
         }
     }
+
+    async findPaintingByIdAndUpdate(id) {
+        try {
+            return await this.MongooseServiceInstance.findByIdAndUpdate(id);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 }
 
 module.exports = PaintingsService;

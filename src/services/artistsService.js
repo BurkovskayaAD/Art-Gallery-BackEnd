@@ -53,6 +53,15 @@ class ArtistsService {
       return { errorPresent: true, error: err };
     }
   }
+
+  async findArtistByIdAndUpdate(id) {
+    try {
+      return await this.MongooseServiceInstance.findByIdAndUpdate(id);
+    } catch (err) {
+      return { errorPresent: true, error: err };
+    }
+  }
+
 }
 
 module.exports = ArtistsService;
