@@ -54,9 +54,9 @@ class ArtistsService {
     }
   }
 
-  async findArtistByIdAndUpdate(id) {
+  async updateOne(id, body) {
     try {
-      return await this.MongooseServiceInstance.findByIdAndUpdate(id);
+      return await this.MongooseServiceInstance.updateOne(id, body);
     } catch (err) {
       return { errorPresent: true, error: err };
     }

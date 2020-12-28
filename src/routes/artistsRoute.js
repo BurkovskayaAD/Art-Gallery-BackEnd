@@ -62,7 +62,7 @@ router.delete('/:artistIdDelete', async (req, res) => {
 });
 
 router.post('/:artistEditId', async (req, res) => {
-  const artistEdit = await artistService.findArtistByIdAndUpdate(req.params.artistEditId, {$set: req.body});
+  const artistEdit = await artistService.updateOne({_id: req.params.id}, {$set: res.body});
   if (artistEdit.errorPresent) {
     res.status(500).json(artistEdit.error);
   } else {
@@ -73,3 +73,5 @@ router.post('/:artistEditId', async (req, res) => {
 
 
 module.exports = router;
+
+//{_id: req.params.artistEditId}, {$set: req.body}
