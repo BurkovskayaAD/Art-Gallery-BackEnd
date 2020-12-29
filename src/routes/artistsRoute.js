@@ -62,7 +62,7 @@ router.delete('/:artistIdDelete', async (req, res) => {
 });
 
 router.post('/:artistEditId', async (req, res) => {
-  const artistEdit = await artistService.updateOne({_id: req.params.id}, {$set: res.body});
+  const artistEdit = await artistService.updateOne({_id: req.params.artistEditId}, {name: res.body});
   if (artistEdit.errorPresent) {
     res.status(500).json(artistEdit.error);
   } else {
