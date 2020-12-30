@@ -62,7 +62,7 @@ router.delete('/:exhibitionIdDelete', async (req, res) => {
 });
 
 router.post('/:exhibitionEditId', async (req, res) => {
-    const exhibitionEdit = await exhibitionService.findExhibitionByIdAndUpdate(req.params.exhibitionEditId);
+    const exhibitionEdit = await exhibitionService.findByIdAndUpdate({"_id": req.params.exhibitionEditId} ,{$set: {name: req.body.name}}, {new: true,});
     if (exhibitionEdit.errorPresent) {
         res.status(500).json(exhibitionEdit.error);
     } else {

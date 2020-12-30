@@ -68,7 +68,7 @@ router.delete("/:paintingIdDelete", async (req, res) => {
 });
 
 router.post('/:paintingEditId', async (req, res) => {
-  const paintingEdit = await paintingService.findPaintingByIdAndUpdate(req.params.paintingEditId);
+  const paintingEdit = await paintingService.findByIdAndUpdate({"_id": req.params.paintingEditId} ,{$set: {name: req.body.name}}, {new: true,});
   if (paintingEdit.errorPresent) {
     res.status(500).json(paintingEdit.error);
   } else {

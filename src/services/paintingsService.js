@@ -53,9 +53,9 @@ class PaintingsService {
         }
     }
 
-    async findPaintingByIdAndUpdate(id) {
+    async findByIdAndUpdate(query, update, options) {
         try {
-            return await this.MongooseServiceInstance.findByIdAndUpdate(id);
+            return await this.MongooseServiceInstance.findByIdAndUpdate(query, update, options);
         } catch (err) {
             return { errorPresent: true, error: err };
         }
