@@ -1,5 +1,4 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
 const ArtistService = require("../services/artistsService");
 const schema = require("../models/artists");
 
@@ -71,8 +70,6 @@ router.post('/:artistEditId', async (req, res) => {
     res.status(200).json(artistEdit);
   }
 });
-
-
 
 module.exports = router;
 

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const {Schema} = mongoose;
 
 const usersSchema = new Schema({
     name: String,
@@ -7,7 +7,7 @@ const usersSchema = new Schema({
     telephone: String,
     email: String,
     password: String,
-    lastModified: { type: Date, default: Date.now },
+    lastModified: {type: Date, default: Date.now},
 }, {
     collection: "Users"
 });

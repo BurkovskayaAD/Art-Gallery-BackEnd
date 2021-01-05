@@ -1,5 +1,4 @@
 const express = require("express");
-// const bodyParser = require("body-parser");
 const PaintingService = require("../services/paintingsService");
 const schema = require("../models/paintings");
 

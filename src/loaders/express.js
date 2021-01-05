@@ -2,7 +2,6 @@ const bodyParser = require("body-parser");
 const express = require("express");
 const morgan = require("morgan");
 const cookieParser = require('cookie-parser');
-const path = require("path");
 const routes = require("../routes");
 const compression = require("compression");
 const config = require("../config");

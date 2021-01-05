@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { Schema } = mongoose;
+const {Schema} = mongoose;
 
 const exhibitionSchema = new Schema({
     name: String,
@@ -7,7 +7,7 @@ const exhibitionSchema = new Schema({
     dateEnd: Date,
     about: String,
     poster: String,
-    lastModified: { type: Date, default: Date.now },
+    lastModified: {type: Date, default: Date.now},
 }, {
     collection: "Exhibitions"
 });
