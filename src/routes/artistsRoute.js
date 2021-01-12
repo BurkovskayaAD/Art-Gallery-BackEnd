@@ -71,7 +71,14 @@ router.post('/:artistEditId', async (req, res) => {
   }
 });
 
-module.exports = router;
+router.post("/photo", async (req, res) => {
+  const newArtistPhoto = await artistService.convert(req.body);
+  if (newArtistPhoto.errorPresent) {
+    res.status(500).json(newArtistPhoto.error);
+  } else {
+    console.log(newArtistPhoto);
+    res.status(201).json(newArtistPhoto);
+  }
+});
 
-//{_id: req.params.artistEditId}, {$set: req.body}
-//, {new: true}
+module.exports = router;

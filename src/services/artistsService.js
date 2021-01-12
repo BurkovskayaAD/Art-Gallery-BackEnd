@@ -62,6 +62,14 @@ class ArtistsService {
     }
   }
 
+  async convert(body){
+    try {
+      console.log(body);
+    } catch (err) {
+      return { errorPresent: true, error: err };
+    }
+  }
+
 }
 
 module.exports = ArtistsService;
