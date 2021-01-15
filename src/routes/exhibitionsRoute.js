@@ -43,6 +43,12 @@ router.get('/:exhibitionId', async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+    const image = req.body.image;
+    const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+    const path = ('public/images/') + req.body.poster;
+    require("fs").writeFile(path, base64Data, 'base64', function(err) {
+        console.log(err);
+    });
     const newExhibition = await exhibitionService.addExhibitions(req.body);
     if (newExhibition.errorPresent) {
         res.status(500).json(newExhibition.error);

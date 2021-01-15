@@ -43,6 +43,12 @@ router.get('/images/:artistPhotoId', async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  const image = req.body.image;
+  const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+  const path = ('public/images/') + req.body.photo;
+  require("fs").writeFile(path, base64Data, 'base64', function(err) {
+    console.log(err);
+  });
   const newArtist = await artistService.addArtists(req.body);
   if (newArtist.errorPresent) {
     res.status(500).json(newArtist.error);
@@ -71,14 +77,5 @@ router.post('/:artistEditId', async (req, res) => {
   }
 });
 
-router.post("/photo", async (req, res) => {
-  const newArtistPhoto = await artistService.convert(req.body);
-  if (newArtistPhoto.errorPresent) {
-    res.status(500).json(newArtistPhoto.error);
-  } else {
-    console.log(newArtistPhoto);
-    res.status(201).json(newArtistPhoto);
-  }
-});
 
 module.exports = router;

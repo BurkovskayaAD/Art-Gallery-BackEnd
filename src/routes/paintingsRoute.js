@@ -47,6 +47,12 @@ router.get("/:paintingId", async (req, res) => {
 });
 
 router.post("/", async (req, res) => {
+  const image = req.body.image;
+  const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+  const path = ('public/images/') + req.body.picture;
+  require("fs").writeFile(path, base64Data, 'base64', function(err) {
+    console.log(err);
+  });
   const newPainting = await paintingService.addPaintings(req.body);
   if (newPainting.errorPresent) {
     res.status(500).json(newPainting.error);
