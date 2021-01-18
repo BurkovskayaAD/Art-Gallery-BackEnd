@@ -73,7 +73,16 @@ router.delete("/:paintingIdDelete", async (req, res) => {
 });
 
 router.post('/:paintingEditId', async (req, res) => {
-  const paintingEdit = await paintingService.findByIdAndUpdate({"_id": req.params.paintingEditId} ,{$set: {name: req.body.name}}, {new: true,});
+  if (req.body.image != null) {
+    const image = req.body.image;
+    const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+    const path = ('public/images/') + req.body.photo;
+    require("fs").writeFile(path, base64Data, 'base64', function (err) {
+      console.log(err);
+    });
+  }
+  const paintingEdit = await paintingService.findByIdAndUpdate({"_id": req.params.paintingEditId} ,
+      {$set: req.body});
   if (paintingEdit.errorPresent) {
     res.status(500).json(paintingEdit.error);
   } else {

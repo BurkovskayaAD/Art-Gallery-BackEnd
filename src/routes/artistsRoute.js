@@ -67,6 +67,14 @@ router.delete('/:artistIdDelete', async (req, res) => {
 });
 
 router.post('/:artistEditId', async (req, res) => {
+  if (req.body.image != null) {
+    const image = req.body.image;
+    const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+    const path = ('public/images/') + req.body.photo;
+    require("fs").writeFile(path, base64Data, 'base64', function (err) {
+      console.log(err);
+    });
+  }
   const artistEdit = await artistService.findByIdAndUpdate({"_id": req.params.artistEditId} ,
       {$set: req.body});
   if (artistEdit.errorPresent) {

@@ -67,10 +67,20 @@ router.delete('/:exhibitionIdDelete', async (req, res) => {
 });
 
 router.post('/:exhibitionEditId', async (req, res) => {
-    const exhibitionEdit = await exhibitionService.findByIdAndUpdate({"_id": req.params.exhibitionEditId} ,{$set: {name: req.body.name}}, {new: true,});
+    if (req.body.image != null) {
+        const image = req.body.image;
+        const base64Data = image.replace(/^data:image\/jpeg;base64,/, "");
+        const path = ('public/images/') + req.body.photo;
+        require("fs").writeFile(path, base64Data, 'base64', function (err) {
+            console.log(err);
+        });
+    }
+    const exhibitionEdit = await exhibitionService.findByIdAndUpdate({"_id": req.params.exhibitionEditId} ,
+        {$set: req.body});
     if (exhibitionEdit.errorPresent) {
         res.status(500).json(exhibitionEdit.error);
     } else {
+        console.log(exhibitionEdit);
         res.status(200).json(exhibitionEdit);
     }
 });
