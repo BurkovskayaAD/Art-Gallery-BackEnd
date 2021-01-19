@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const routes = require("../routes");
 const compression = require("compression");
 const config = require("../config");
+require('src/models/Users');
+require('src/config/passport')
 
 class ExpressLoader {
   constructor() {
