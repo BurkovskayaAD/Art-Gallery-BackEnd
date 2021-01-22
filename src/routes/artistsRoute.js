@@ -85,16 +85,5 @@ router.post('/:artistEditId', async (req, res) => {
   }
 });
 
-router.get("/search", async (req, res) => {
-  const artistsSearch = await artistService.findArtistBySearch({}, req.body);
-  console.log(req.body);
-  if (artistsSearch.errorPresent) {
-    res.status(500).json(artistsSearch.error);
-  } else {
-    res.status(200).json(artistsSearch);
-  }
-});
-
-
 
 module.exports = router;

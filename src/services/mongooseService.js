@@ -15,10 +15,6 @@ class MongooseService {
     return this.model.find(query).exec();
   }
 
-  search(query, param){
-    return this.model.find(query, {name: param}).exec();
-  }
-
   findOne(query) {
     return this.model.findOne(query).exec();
   }

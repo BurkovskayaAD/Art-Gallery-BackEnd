@@ -38,14 +38,6 @@ class ArtistsService {
     }
   }
 
-  async findArtistBySearch(query, param) {
-    try {
-      return await this.MongooseServiceInstance.search(query, param);
-    } catch (err) {
-      return { errorPresent: true, error: err };
-    }
-  }
-
   async addArtists(body) {
     try {
       return await this.MongooseServiceInstance.create(body);
