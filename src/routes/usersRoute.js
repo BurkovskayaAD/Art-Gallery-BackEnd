@@ -1,16 +1,12 @@
 const express = require("express");
 const UserService = require("../services/usersService");
 const schema = require("../models/users");
+const passwordHash = require('password-hash');
 
 const router = express.Router();
 
 const userService = new UserService();
 
-// router.get('/', function (req, res, next) {
-//     res.render('index', {success: req.session.success, errors: req.session.errors});
-//     req.session.errors = null;
-// })
-//
 // router.post('/submit', function (req, res, next) {
 //     const errors = req.validationErrors();
 //     if (errors) {
@@ -23,23 +19,33 @@ const userService = new UserService();
 // })
 
 router.post("/", async (req, res) => {
-    // const newUser = await userService.findUser({userEmail: req.body.email});
-    // if (newUser.errorPresent){
-    //     await userService.addUsers(req.body);
-    //     res.status(500).json(newUser.error);
-    // } else {
-    //     res.status(201).json(newUser);
-    // }
+    const pass = req.body.password;
+    const hashedPassword = passwordHash.generate(pass);
+    console.log(hashedPassword);
+    req.body.password = hashedPassword;
     const newUser = await userService.addUsers(req.body);
     if (newUser.errorPresent) {
         res.status(500).json(newUser.error);
     } else {
         res.status(201).json(newUser);
-        // if (!req.session.key) req.session.key = req.sessionID
-        //
-        // req.session.key[req.sessionID].showAd = req.body.showAd
-        // res.sendStatus(200)
     }
 });
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// router.get("/check", async (req, res) => {
+//     // const pass = req.body.password;
+//     // const hashedPassword = passwordHash.generate(pass);
+//     const userCheck = await userService.findUser(
+//         // {email: req.body.email}
+//     );
+//     // console.log(hashedPassword);
+//     if (userCheck.errorPresent) {
+//         res.status(500).json(userCheck.error);
+//     } else {
+//         res.status(200);
+//         console.log(userCheck);
+//     }
+// })
 
 module.exports = router;
