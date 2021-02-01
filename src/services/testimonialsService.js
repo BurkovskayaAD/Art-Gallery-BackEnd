@@ -1,9 +1,9 @@
 const mongooseService = require("./mongooseService");
-const testimonialModel = require("../models/testimonials");
+const testimonialsModel = require("../models/testimonials");
 
 class TestimonialsService {
     constructor() {
-        this.MongooseServiceInstance = new mongooseService(testimonialModel);
+        this.MongooseServiceInstance = new mongooseService(testimonialsModel);
     }
 
     async addTestimonials(body) {
