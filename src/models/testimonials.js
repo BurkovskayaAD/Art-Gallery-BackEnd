@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
-const testimonialsSchema = new Schema({
+const testimonialSchema = new Schema({
     name: String,
     email: String,
     testimonial: String,
@@ -10,6 +10,6 @@ const testimonialsSchema = new Schema({
     collection: "Testimonials"
 });
 
-const Testimonials = mongoose.model('Testimonials', testimonialsSchema);
+const Testimonials = mongoose.model('Testimonials', testimonialSchema);
 
 module.exports = Testimonials;

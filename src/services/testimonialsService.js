@@ -6,14 +6,6 @@ class TestimonialsService {
         this.MongooseServiceInstance = new mongooseService(testimonialsModel);
     }
 
-    async addTestimonials(body) {
-        try {
-            return await this.MongooseServiceInstance.create(body);
-        } catch (err) {
-            return {errorPresent: true, error: err};
-        }
-    }
-
     async findTestimonials(query) {
         try {
             return await this.MongooseServiceInstance.find(query);
@@ -21,8 +13,14 @@ class TestimonialsService {
             return { errorPresent: true, error: err };
         }
     }
+
+    async addTestimonials(body) {
+        try {
+            return await this.MongooseServiceInstance.create(body);
+        } catch (err) {
+            return { errorPresent: true, error: err };
+        }
+    }
 }
-
-
 
 module.exports = TestimonialsService;
