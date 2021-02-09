@@ -10,7 +10,7 @@ class TestimonialsService {
         try {
             return await this.MongooseServiceInstance.find(query);
         } catch (err) {
-            return { errorPresent: true, error: err };
+            return {errorPresent: true, error: err};
         }
     }
 
@@ -18,7 +18,7 @@ class TestimonialsService {
         try {
             return await this.MongooseServiceInstance.create(body);
         } catch (err) {
-            return { errorPresent: true, error: err };
+            return {errorPresent: true, error: err};
         }
     }
 }
